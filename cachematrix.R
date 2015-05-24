@@ -6,14 +6,14 @@ makeCacheMatrix <- function(x = numeric()) {
     x <<- y
     m <<- NULL
   }
-  mat <- array (m*x, m, x)
+  mat <- array (m*x, m, x) #Here I create the matrix
 }
 
 
 ## This is a function to get the inverse of the matrix
 
 cacheSolve <- function(x, ...) {
-  m <- solve(x)
+  m <- solve(x) #This is where I get the inverse
   if(!is.null(m)) {
     message("all ok")
     return(m)
