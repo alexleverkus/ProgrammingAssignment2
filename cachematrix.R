@@ -1,30 +1,23 @@
-## These functions create a vector and store its mean in a special object
+## This function creates an array 
 
-makeVector <- function(x = numeric()) {
+makeCacheMatrix <- function(x = numeric()) {
   m <- NULL
   set <- function(y) {
     x <<- y
     m <<- NULL
   }
-  get <- function() x
-  setmean <- function(mean) m <<- mean
-  getmean <- function() m
-  list(set = set, get = get,
-       setmean = setmean,
-       getmean = getmean)
+  mat <- array (m*x, m, x)
 }
 
 
-## This is a function to cache the means of the vector
+## This is a function to get the inverse of the matrix
 
-cachemean <- function(x, ...) {
-  m <- x$getmean()
+cacheSolve <- function(x, ...) {
+  m <- solve(x)
   if(!is.null(m)) {
-    message("getting cached data")
+    message("all ok")
     return(m)
   }
-  data <- x$get()
+  data <- mat()
   m <- mean(data, ...)
-  x$setmean(m)
-  m
 }
